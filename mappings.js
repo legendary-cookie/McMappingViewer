@@ -23,7 +23,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 const zip = new JSZip();
 const mobile = new MobileDetect(window.navigator.userAgent);
 
-const NO_CORS_BYPASS = "https://nocors.tisigue.de/"; //thx guy on herokuapp
+const NO_CORS_BYPASS = "https://nocors.vincentschweiger.de/"; //thx guy on herokuapp
 // thx MCP \s
 
 const combinedMap = new Map();
