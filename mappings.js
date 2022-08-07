@@ -589,6 +589,10 @@ async function loadMCPSrgs(mcVersion) {
     loadedSRG = true;
 }
 
+function turnToNoCors(url) {
+    return url.replace("https://", NO_CORS_BYPASS);
+}
+
 async function loadMojang(mcVersion) {
     let versionData = null;
     for (const version of minecraftVersions) {
@@ -597,8 +601,8 @@ async function loadMojang(mcVersion) {
             break;
         }
     }
-    const mappingURL = JSON.parse(await (await fetch(versionData.url)).text())?.downloads?.client_mappings?.url;
-    let mappings = (await (await fetch(`${mappingURL}`))?.text())?.split("<").join("&lt;").split(">").join("&gt;").split(".").join("/");
+    const mappingURL = JSON.parse(await (await fetch(turnToNoCors(versionData.url))).text())?.downloads?.client_mappings?.url;
+    let mappings = (await (await fetch(`${turnToNoCors(mappingURL)}`))?.text())?.split("<").join("&lt;").split(">").join("&gt;").split(".").join("/");
     mappings = mappings.split("\n");
     mappings.shift();
     mappings = mappings.join("\n").match(/^[^\s].+?$(?:\n\s.+?$)*/gm);
