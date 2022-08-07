@@ -58,7 +58,7 @@ function mcVersionCompare(a, b) {
 async function loadMCVersions() {
     //get mc versions
     if (minecraftVersions == null) {
-        const res = await fetch("https://launchermeta.mojang.com/mc/game/version_manifest.json");
+        const res = await fetch(`${NO_CORS_BYPASS}launchermeta.mojang.com/mc/game/version_manifest.json`);
         minecraftVersions = JSON.parse(await res.text()).versions;
     }
 
